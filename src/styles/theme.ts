@@ -1,6 +1,4 @@
 const colors = {
-
-
     greyLight1: '#faf9f9',
     greyLight2: '#f4f2f2',
     greyLight3: '#f0eeee',

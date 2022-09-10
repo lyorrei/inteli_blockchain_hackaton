@@ -13,7 +13,7 @@ export default createGlobalStyle`
     }
 
     body {
-        background: ${props => props.theme.colors.background};
+        background: ${props => props.theme.colors.white};
         font-family: ${props => props.theme.fontFamily};
         position: relative;
         min-height: 100vh;

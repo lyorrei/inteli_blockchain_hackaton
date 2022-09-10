@@ -5,6 +5,7 @@ export const Container = styled.div`
     flex-direction: column;
     grid-gap: 4rem;
     text-align: center;
+    justify-content: center;
 
     p {
         font-size: 2rem;
