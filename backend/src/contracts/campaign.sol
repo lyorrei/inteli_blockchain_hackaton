@@ -13,15 +13,15 @@ Campaign contract: manage one campaign and track all donations
         - expirationData: when the campaign is gonna finish
         - color: page's theme
         - donors: array that contain all information from people that have donated
-        - biggestDonation: struct that contains the address and ammount that has been donated of someone.
-    . methods: mint nft for each donation, mint nft when the event is closed for the biggest donor and set the campaign status', register in state variable the donors' information, get the ammount of eth the campaign has,
+        - biggestDonation: struct that contains the address and amount that has been donated of someone.
+    . methods: mint nft for each donation, mint nft when the event is closed for the biggest donor and set the campaign status', register in state variable the donors' information, get the amount of eth the campaign has,
 */
-contract Campaing is ERC1155 {
+contract Campaign is ERC1155 {
     address public owner;
 
-    string campaignName;
+    string public campaignName;
 
-    bool status;
+    bool public status;
 
     address payable public receiver;
 
@@ -37,7 +37,7 @@ contract Campaing is ERC1155 {
 
     struct BiggestDonation {
         address endereco;
-        uint256 ammount;
+        uint256 amount;
     }
 
     BiggestDonation public biggestDonation;
@@ -70,9 +70,9 @@ contract Campaing is ERC1155 {
     receive() external payable {
         require(status == true && msg.value > 0, "This campaign is not active");
         _mint(msg.sender, 1, 1, "");
-        if (msg.value > biggestDonation.ammount) {
+        if (msg.value > biggestDonation.amount) {
             biggestDonation.endereco = msg.sender;
-            biggestDonation.ammount = msg.value;
+            biggestDonation.amount = msg.value;
         }
         emit Received(msg.sender, msg.value);
     }

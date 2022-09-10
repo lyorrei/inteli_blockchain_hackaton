@@ -24,10 +24,12 @@
             "@/pages/*": ["src/pages/*"],
             "@/styles/pages/*": ["src/styles/pages/*"],
             "@/types/*": ["src/types/*"]
-        }
+        },
+        "typeRoots": ["index.d.ts"]
     },
     "include": [
         "next-env.d.ts",
+        "index.d.ts",
         "**/*.ts",
         "**/*.tsx",
         "src/styles/styled.d.ts"

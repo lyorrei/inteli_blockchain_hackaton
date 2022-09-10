@@ -8,7 +8,9 @@ const colors = {
     greyDark3: '#999',
 
     white: '#fff',
-    black: '#000'
+    black: '#000',
+
+    primary: "#069be2"
 }
 
 const sizes = {

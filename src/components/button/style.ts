@@ -6,7 +6,7 @@ export const Btn = styled.button`
     color: ${props => props.theme.colors.white};
     padding: 1.7rem 5rem;
     border-radius: 2rem;
-    background-color: #069be2;
+    background-color: ${props => props.theme.colors.primary};
     box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.4);
     font-size: 1.6rem;
     cursor: pointer;

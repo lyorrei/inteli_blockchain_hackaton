@@ -1,9 +1,9 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/henriquelemos/Documents/GitHub/inteli_blockchain_hackaton/backend/src/contracts/campaign.sol": {
-      "lastModificationDate": 1662836201795,
-      "contentHash": "2a2845b5a78e96943f8938d5aaf4295e",
+    "C:\\Users\\reish\\Documents\\GitHub\\inteli_blockchain_hackaton\\backend\\src\\contracts\\campaign.sol": {
+      "lastModificationDate": 1662838718715,
+      "contentHash": "393b7c89d7056d00191e98f3971c3b30",
       "sourceName": "backend/src/contracts/campaign.sol",
       "solcConfig": {
         "version": "0.8.9",
@@ -35,11 +35,11 @@
         "^0.8.9"
       ],
       "artifacts": [
-        "Campaing"
+        "Campaign"
       ]
     },
-    "/Users/henriquelemos/Documents/GitHub/inteli_blockchain_hackaton/node_modules/@openzeppelin/contracts/token/ERC1155/ERC1155.sol": {
-      "lastModificationDate": 1662827641149,
+    "C:\\Users\\reish\\Documents\\GitHub\\inteli_blockchain_hackaton\\node_modules\\@openzeppelin\\contracts\\token\\ERC1155\\ERC1155.sol": {
+      "lastModificationDate": 1662838381837,
       "contentHash": "9be05ac5a08ad0370e3cc36665ca490c",
       "sourceName": "@openzeppelin/contracts/token/ERC1155/ERC1155.sol",
       "solcConfig": {
@@ -80,8 +80,43 @@
         "ERC1155"
       ]
     },
-    "/Users/henriquelemos/Documents/GitHub/inteli_blockchain_hackaton/node_modules/@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol": {
-      "lastModificationDate": 1662827642089,
+    "C:\\Users\\reish\\Documents\\GitHub\\inteli_blockchain_hackaton\\node_modules\\@openzeppelin\\contracts\\utils\\Address.sol": {
+      "lastModificationDate": 1662838381606,
+      "contentHash": "c476b3895a94798b88a4bb97399e6dfe",
+      "sourceName": "@openzeppelin/contracts/utils/Address.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.1"
+      ],
+      "artifacts": [
+        "Address"
+      ]
+    },
+    "C:\\Users\\reish\\Documents\\GitHub\\inteli_blockchain_hackaton\\node_modules\\@openzeppelin\\contracts\\token\\ERC1155\\IERC1155Receiver.sol": {
+      "lastModificationDate": 1662838382498,
       "contentHash": "9f8822b72fe2702979e40160cb6d9636",
       "sourceName": "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol",
       "solcConfig": {
@@ -117,8 +152,8 @@
         "IERC1155Receiver"
       ]
     },
-    "/Users/henriquelemos/Documents/GitHub/inteli_blockchain_hackaton/node_modules/@openzeppelin/contracts/token/ERC1155/IERC1155.sol": {
-      "lastModificationDate": 1662827642062,
+    "C:\\Users\\reish\\Documents\\GitHub\\inteli_blockchain_hackaton\\node_modules\\@openzeppelin\\contracts\\token\\ERC1155\\IERC1155.sol": {
+      "lastModificationDate": 1662838382474,
       "contentHash": "d5a8f6e07ca38ec384856cfe9f08a867",
       "sourceName": "@openzeppelin/contracts/token/ERC1155/IERC1155.sol",
       "solcConfig": {
@@ -154,80 +189,8 @@
         "IERC1155"
       ]
     },
-    "/Users/henriquelemos/Documents/GitHub/inteli_blockchain_hackaton/node_modules/@openzeppelin/contracts/utils/Address.sol": {
-      "lastModificationDate": 1662827640865,
-      "contentHash": "c476b3895a94798b88a4bb97399e6dfe",
-      "sourceName": "@openzeppelin/contracts/utils/Address.sol",
-      "solcConfig": {
-        "version": "0.8.9",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.1"
-      ],
-      "artifacts": [
-        "Address"
-      ]
-    },
-    "/Users/henriquelemos/Documents/GitHub/inteli_blockchain_hackaton/node_modules/@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol": {
-      "lastModificationDate": 1662827642074,
-      "contentHash": "9148c2e10c4efb12c71a7f080da5559b",
-      "sourceName": "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol",
-      "solcConfig": {
-        "version": "0.8.9",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "../IERC1155.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IERC1155MetadataURI"
-      ]
-    },
-    "/Users/henriquelemos/Documents/GitHub/inteli_blockchain_hackaton/node_modules/@openzeppelin/contracts/utils/Context.sol": {
-      "lastModificationDate": 1662827640916,
+    "C:\\Users\\reish\\Documents\\GitHub\\inteli_blockchain_hackaton\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
+      "lastModificationDate": 1662838381695,
       "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
@@ -261,8 +224,8 @@
         "Context"
       ]
     },
-    "/Users/henriquelemos/Documents/GitHub/inteli_blockchain_hackaton/node_modules/@openzeppelin/contracts/utils/introspection/ERC165.sol": {
-      "lastModificationDate": 1662827641365,
+    "C:\\Users\\reish\\Documents\\GitHub\\inteli_blockchain_hackaton\\node_modules\\@openzeppelin\\contracts\\utils\\introspection\\ERC165.sol": {
+      "lastModificationDate": 1662838381876,
       "contentHash": "0e7db055ce108f9da7bb6686a00287c0",
       "sourceName": "@openzeppelin/contracts/utils/introspection/ERC165.sol",
       "solcConfig": {
@@ -298,8 +261,45 @@
         "ERC165"
       ]
     },
-    "/Users/henriquelemos/Documents/GitHub/inteli_blockchain_hackaton/node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol": {
-      "lastModificationDate": 1662827642114,
+    "C:\\Users\\reish\\Documents\\GitHub\\inteli_blockchain_hackaton\\node_modules\\@openzeppelin\\contracts\\token\\ERC1155\\extensions\\IERC1155MetadataURI.sol": {
+      "lastModificationDate": 1662838382488,
+      "contentHash": "9148c2e10c4efb12c71a7f080da5559b",
+      "sourceName": "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../IERC1155.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC1155MetadataURI"
+      ]
+    },
+    "C:\\Users\\reish\\Documents\\GitHub\\inteli_blockchain_hackaton\\node_modules\\@openzeppelin\\contracts\\utils\\introspection\\IERC165.sol": {
+      "lastModificationDate": 1662838382528,
       "contentHash": "03e6768535ac4da0e9756f1d8a4a018a",
       "sourceName": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
       "solcConfig": {
@@ -333,9 +333,9 @@
         "IERC165"
       ]
     },
-    "/Users/henriquelemos/Documents/GitHub/inteli_blockchain_hackaton/backend/src/contracts/campaignFactory.sol": {
-      "lastModificationDate": 1662833829789,
-      "contentHash": "692f0455d5f9f0883de7ccef96b54283",
+    "C:\\Users\\reish\\Documents\\GitHub\\inteli_blockchain_hackaton\\backend\\src\\contracts\\campaignFactory.sol": {
+      "lastModificationDate": 1662838711790,
+      "contentHash": "a56187e9d73dfb6e9fb850e870ce30a8",
       "sourceName": "backend/src/contracts/campaignFactory.sol",
       "solcConfig": {
         "version": "0.8.9",

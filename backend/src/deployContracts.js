@@ -4,7 +4,7 @@ const Web3 = require('web3')
 const fs = require('fs')
 
 // Compiled smart contracts
-const compiledCampaingFactory = require('./../contracts/artifacts/backend/src/contracts/capaignFactory.sol/capaignFactory.json')
+const compiledCampaignFactory = require('./contracts/compiledContracts/backend/src/contracts/campaignFactory.sol/campaignFactory.json')
 
 // Setup rinkeby account
 let web3
@@ -38,7 +38,7 @@ const deployContract = async (contractName, compiledContract) => {
 
 ;(async () => {
     // Calling the function to deploy each contract
-    await deployContract('CampaignFactory', compiledCampaingFactory)
+    await deployContract('CampaignFactory', compiledCampaignFactory)
 
     fs.readFile(__dirname + '/contractsAddresses.json', 'utf8', function readFileCallback(err, data) {
         if (err) {

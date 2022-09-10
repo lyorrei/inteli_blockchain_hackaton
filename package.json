@@ -7,12 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "compile": "npx hardhat compile"
+    "compile": "npx hardhat compile",
+    "createOneCampaign": "node backend/src/createOneCampaign.js"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.7.3",
     "@truffle/hdwallet-provider": "^2.0.14",
     "@types/styled-components": "^5.1.25",
+    "ethers": "^5.7.0",
     "hardhat": "^2.11.1",
     "next": "^12.1.6",
     "next-images": "^1.8.4",
