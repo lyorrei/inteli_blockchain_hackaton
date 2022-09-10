@@ -14,13 +14,14 @@ contracts
 
 contract CampaignFactory {
     address owner;
+    address public activeCampaign;
 
     struct Campaigns {
         string name;
         address endereco;
     }
 
-    arrCampaigns[] public campanhas;
+    Campaigns[] arrCampaigns;
 
     constructor() {
         owner = msg.sender;
@@ -31,13 +32,26 @@ contract CampaignFactory {
         _;
     }
 
-    function createCampaing(string memory _name) public isOwner {
-        Campaing campaing = new Campaing(owner);
-        Campaigns newCampaing = Campaigns(_name, address(campaing));
-        arrCampaigns.push(newCampaing);
+    function createCampaing(
+        string memory _name,
+        string memory _ipfsLink,
+        address payable _donationReceiver,
+        string memory _color,
+        uint256 _expirationDate
+    ) public isOwner {
+        Campaing campaing = new Campaing(
+            owner,
+            _name,
+            _ipfsLink,
+            _donationReceiver,
+            _color,
+            _expirationDate
+        );
+        arrCampaigns.push(Campaigns(_name, address(campaing)));
+        activeCampaign = address(campaing);
     }
 
-    function getCampains() public view isOwner returns (Campaigns[]) {
+    function getCampaings() public view isOwner returns (Campaigns[] memory) {
         return arrCampaigns;
     }
 }

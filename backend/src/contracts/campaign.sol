@@ -1,29 +1,29 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.15;
+pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 
 /*
-Person contract: manage person profile and track activities
+Campaign contract: manage one campaign and track all donations
     . state variables
-        - owner: EOA == Inteli mngmt
-        - checkIn: log check-ins in a given day
-        - checkOut: log check-outs in a given day
-        - activities: log activities done by person
-    . methods: create and retrieve events and register in state variable
+        - owner: EOA == Our neighbors mngmt
+        - campaignName: name of the campaign
+        - status: in time campaign's status
+        - receiver: who is gone benefit from the donations address
+        - expirationData: when the campaign is gonna finish
+        - color: page's theme
+        - donors: array that contain all information from people that have donated
+        - biggestDonation: struct that contains the address and ammount that has been donated of someone.
+    . methods: mint nft for each donation, mint nft when the event is closed for the biggest donor and set the campaign status', register in state variable the donors' information, get the ammount of eth the campaign has,
 */
 contract Campaing is ERC1155 {
     address public owner;
 
     string campaignName;
 
-    string status;
+    bool status;
 
-    string standartIpfsLink;
-
-    string landIpfsLink;
-
-    address public receiver;
+    address payable public receiver;
 
     uint256 public expirationDate;
 
@@ -40,7 +40,7 @@ contract Campaing is ERC1155 {
         uint256 ammount;
     }
 
-    BiggestDonation biggestDonation;
+    BiggestDonation public biggestDonation;
 
     Donors[] public donors;
 
@@ -55,22 +55,20 @@ contract Campaing is ERC1155 {
         address _owner,
         string memory _campaignName,
         string memory _ipfsLink,
-        string memory _receiver,
-        string memory _color
-    ) {
+        address payable _receiver,
+        string memory _color,
+        uint256 _expirationDate
+    ) ERC1155(_ipfsLink) {
         owner = _owner;
         campaignName = _campaignName;
-        status = "active";
-        ipfsLink = _ipfsLink;
+        status = true;
         receiver = _receiver;
         color = _color;
+        expirationDate = _expirationDate;
     }
 
-    receive() external payable ERC1155(standartIpfsLink) {
-        require(
-            status == "active" && msg.value > 0,
-            "this campaign is not active"
-        );
+    receive() external payable {
+        require(status == true && msg.value > 0, "This campaign is not active");
         _mint(msg.sender, 1, 1, "");
         if (msg.value > biggestDonation.ammount) {
             biggestDonation.endereco = msg.sender;
@@ -79,17 +77,29 @@ contract Campaing is ERC1155 {
         emit Received(msg.sender, msg.value);
     }
 
+    function addDonor(
+        string memory _name,
+        string memory _number,
+        address _endereco
+    ) public isOwner {
+        donors.push(Donors(_name, _number, _endereco));
+    }
+
+    function getDonors() public view returns (Donors[] memory) {
+        return donors;
+    }
+
     function getBalance() public view returns (uint256) {
         return address(this).balance;
     }
 
-    function endCampaign() external payable isOwner ERC1155(landIpfsLink) {
+    function endCampaign() external payable isOwner {
         require(
-            block.timestamp >= expirationDate,
+            block.timestamp >= expirationDate && status == true,
             "You cannot finish the campaign yet"
         );
         receiver.transfer(getBalance());
         _mint(biggestDonation.endereco, 2, 1, "");
-        status = "disabled";
+        status = false;
     }
 }
