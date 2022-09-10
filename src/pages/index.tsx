@@ -2,22 +2,26 @@ import React from 'react'
 
 import Head from 'next/head'
 
-import {
-    Container,
-    PageContainer
-} from '@/styles/pages/index/style'
+import { Container, Content, PageContainer } from '@/styles/pages/index/style'
+
+import Navbar from '@/components/navbar'
+import Header from '@/components/header'
+import Nft from '@/components/nft'
 
 const Home: React.FC = () => {
     return (
         <>
             <Head>
                 <title>Our neighbor</title>
-
             </Head>
 
-            <PageContainer >
+            <PageContainer>
                 <Container>
-
+                    <Navbar />
+                    <Content>
+                        <Header />
+                        <Nft />
+                    </Content>
                 </Container>
             </PageContainer>
         </>

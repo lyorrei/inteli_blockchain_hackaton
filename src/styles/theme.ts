@@ -1,6 +1,5 @@
 const colors = {
-    primary: '#FF324B',
-    secondary: '#810096',
+
 
     greyLight1: '#faf9f9',
     greyLight2: '#f4f2f2',
@@ -10,10 +9,8 @@ const colors = {
     greyDark2: '#777',
     greyDark3: '#999',
 
-    background: '',
-    backgroundSecondary: '',
-    text: '',
-    textSecondary: ''
+    white: '#fff',
+    black: '#000'
 }
 
 const sizes = {
@@ -26,23 +23,19 @@ const fontFamily = "'Montserrat', sans-serif"
 export const lightTheme = {
     colors: {
         ...colors,
-        background: '#fff',
-        backgroundSecondary: '#333333',
-        text: '#000',
-        textSecondary: '#fff'
     },
     sizes,
     fontFamily
 }
 
-export const darkTheme = {
-    colors: {
-        ...colors,
-        background: '#141414',
-        backgroundSecondary: '#444444',
-        text: '#fff',
-        textSecondary: '#000'
-    },
-    sizes,
-    fontFamily
-}
+// export const darkTheme = {
+//     colors: {
+//         ...colors,
+//         background: '#141414',
+//         backgroundSecondary: '#444444',
+//         text: '#fff',
+//         textSecondary: '#000'
+//     },
+//     sizes,
+//     fontFamily
+// }
