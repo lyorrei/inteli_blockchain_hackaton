@@ -65,7 +65,7 @@ const MyApp = ({ Component, pageProps }) => {
         const campaignBalance = await getDonationsBalance()
         console.log(campaignBalance)
         setDonationBalance(campaignBalance)
-        const nftLink = await getnftLink()
+        const nftLink = await getnftLink(1)
         console.log(nftLink)
         setNftLink(nftLink)
         const description = await getCampaignDescription()

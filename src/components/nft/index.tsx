@@ -6,12 +6,12 @@ import NftImage from '../../assets/images/blue/nft.png'
 import ProgressBar from '../progressBar'
 import { Container, ImageContainer, MoneyDonatedNumber } from './style'
 import AnimatedNumber from 'animated-number-react'
-import { getDonationsBalance } from 'src/ethereum/interactions/functions'
+import { getDonationsBalance, getnftLink } from 'src/ethereum/interactions/functions'
 
 interface Props {}
 
 const Nft: React.FC<Props> = props => {
-    const { donationBalance, setDonationBalance } = useMetamask()
+    const { donationBalance, setDonationBalance, setNftLink, nftLink } = useMetamask()
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -20,6 +20,8 @@ const Nft: React.FC<Props> = props => {
             })
         }, 5000)
 
+        getnftLink(1).then(url => setNftLink(url))
+
         return () => clearInterval(interval)
     }, [])
 
@@ -27,7 +29,7 @@ const Nft: React.FC<Props> = props => {
         <Container>
             <ImageContainer>
                 <Image
-                    src={NftImage}
+                    src={NftImage}//{nftLink ? nftLink : ''} //NftImage}
                     layout="fixed"
                     width={251}
                     height={390}

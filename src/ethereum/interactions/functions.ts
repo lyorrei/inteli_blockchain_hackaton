@@ -133,22 +133,26 @@ export const getBiggestDonor = async () => {
     return null
 }
 
-export const getnftLink = async () => {
-    const campaignFactoryContract = await campaignFactory()
-    const addrs = await campaignFactoryContract.activeCampaign()
-    const campaignContract = await campaign(addrs)
-    const nftLink = await campaignContract.uri(1)
+export const getnftLink = async id => {
+    try {
+        const campaignFactoryContract = await campaignFactory()
+        const addrs = await campaignFactoryContract.activeCampaign()
+        const campaignContract = await campaign(addrs)
+        const nftLink = await campaignContract.uri(1)
+        const formatedLink = nftLink.replace('{id}', id)
 
-    if (nftLink != '') {
-        const formatedIpfsLink = 'https://ipfs.io/ipfs/' + nftLink.slice(7)
-        const response = await fetch(formatedIpfsLink)
-        const metadata = await response.json()
-        const formatedImageLink =
-            'https://ipfs.io/ipfs/' + metadata.image.slice(7)
-        return formatedImageLink
+        if (nftLink != '') {
+            const formatedIpfsLink =
+                'https://ipfs.io/ipfs/' + formatedLink.slice(7)
+            const response = await fetch(formatedIpfsLink)
+            const metadata = await response.json()
+            const formatedImageLink =
+                'https://ipfs.io/ipfs/' + metadata.image.slice(7)
+            return formatedImageLink
+        }
+    } catch (err) {
+        return null
     }
-
-    return null
 }
 
 export const getCampaignDescription = async () => {

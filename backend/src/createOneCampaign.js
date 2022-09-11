@@ -71,14 +71,14 @@ const createOneCampaign = async (
 }
 
 ;(async () => {
-    const dateStr = '2022-09-21'
+    const dateStr = '2022-09-12'
     const date = new Date(dateStr)
     const unixTimestamp = Number(Math.floor(date.getTime() / 1000))
 
     // Calling the function to create one campaign
     await createOneCampaign(
         'Water save lifes',
-        '',
+        'ipfs://bafybeicfm5w4ld6vb5j7drdw2luibc727mq7r3z2rgxsbubshx4irs54wm/{id}.json',
         '0x17bf6c769096f5E5249Bf2F4B58bF9611f7fec40',
         '#017cb2',
         unixTimestamp,

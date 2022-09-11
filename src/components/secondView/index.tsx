@@ -14,7 +14,7 @@ import {
 } from './style'
 import earthImg from '../../assets/images/earthImg.png'
 import earthGIF from '../../assets/images/earth.gif'
-import smallNft from '../../assets/images/smallNft.png'
+import smallNft from '../../assets/images/blue/nft.png'
 import { ethers } from 'ethers'
 import { getBiggestDonor } from '../../ethereum/interactions/functions'
 import { getDonors } from '../../ethereum/interactions/functions'
@@ -71,10 +71,9 @@ const SecondView: React.FC<Props> = props => {
                             </SmallImageContainer>
                             <BiggestDonorInfos>
                                 <h1>{biggestDonor.name}</h1>
-                                <div>
-                                    <p>{biggestDonor.amount}</p>
-                                    <span>from {biggestDonor.address}</span>
-                                </div>
+
+                                <p>{biggestDonor.amount} ETH</p>
+                                <span>{biggestDonor.address}</span>
                             </BiggestDonorInfos>
                         </BiggestDonorContainer>
                     )}
@@ -88,20 +87,17 @@ const SecondView: React.FC<Props> = props => {
                                         src={smallNft}
                                         layout="fixed"
                                         quality={100}
-                                        width={62}
-                                        height={62}
+                                        width={30}
+                                        height={30}
                                     />
                                 </SmallImageContainer>
                                 <DonorsInfos>
                                     <h1>{donor.name}</h1>
-                                    <div>
-                                        <p>
-                                            {ethers.utils.formatEther(
-                                                donor.amount
-                                            )}
-                                        </p>
-                                        <span></span>
-                                    </div>
+                                    <p>
+                                        {ethers.utils.formatEther(donor.amount)}{' '}
+                                        ETH
+                                    </p>
+                                    <span>{donor.endereco}</span>
                                 </DonorsInfos>
                             </Donor>
                         ))}

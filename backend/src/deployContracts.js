@@ -4,7 +4,7 @@ const Web3 = require('web3')
 const fs = require('fs')
 
 // Compiled smart contracts
-const compiledCampaignFactory = require('./contracts/compiledContracts/backend/src/contracts/campaignFactory.sol/campaignFactory.json')
+const compiledCampaignFactory = require('./contracts/compiledContracts/backend/src/contracts/campaignFactory.sol/CampaignFactory.json')
 
 // Setup rinkeby account
 let web3
@@ -23,7 +23,7 @@ const deployContract = async (contractName, compiledContract) => {
 
         const result = await new web3.eth.Contract(compiledContract.abi)
             .deploy({ data: compiledContract.bytecode })
-            .send({ gas: '25000000', from: accounts[0] })
+            .send({ from: accounts[0] })
 
         console.log('Contract deployed to', result.options.address)
         provider.engine.stop()
@@ -37,29 +37,37 @@ const deployContract = async (contractName, compiledContract) => {
 }
 
 ;(async () => {
-    // Calling the function to deploy each contract
+        // Calling the function to deploy each contract
     await deployContract('CampaignFactory', compiledCampaignFactory)
-
-    fs.readFile(__dirname + '/contractsAddresses.json', 'utf8', function readFileCallback(err, data) {
-        if (err) {
-            console.log(err)
-            return
-        }
-
-        const newJson = JSON.parse(data) //now it an object
-        newJson.addresses.push(contractsAdresses) //add some data
-
-        // Create Json with Addresses
-        const jsonAddressObject = JSON.stringify(newJson)
-
-        fs.writeFile(__dirname + '/contractsAddresses.json', jsonAddressObject, 'utf8', (err) => {
+    fs.readFile(
+        __dirname + '/contractsAddresses.json',
+        'utf8',
+        function readFileCallback(err, data) {
             if (err) {
                 console.log(err)
                 return
             }
 
-            console.log('Arquivo com endereço de contratos criados')
-            return
-        })
-    })
+            const newJson = JSON.parse(data) //now it an object
+            newJson.addresses.push(contractsAdresses) //add some data
+
+            // Create Json with Addresses
+            const jsonAddressObject = JSON.stringify(newJson)
+
+            fs.writeFile(
+                __dirname + '/contractsAddresses.json',
+                jsonAddressObject,
+                'utf8',
+                err => {
+                    if (err) {
+                        console.log(err)
+                        return
+                    }
+
+                    console.log('Arquivo com endereço de contratos criados')
+                    return
+                }
+            )
+        }
+    )
 })()

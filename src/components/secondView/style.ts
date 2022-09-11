@@ -32,11 +32,11 @@ export const LeadboardContainer = styled.div`
     }
 
     & > p {
-        font-size: 14px;
-        margin: 15px;
+        font-size: 1.4rem;
+        margin: 1.5rem;
         border: 1px solid #373737;
         display: inline-block;
-        padding: 5px;
+        padding: 1rem;
         border-radius: 10px;
     }
 `
@@ -51,12 +51,17 @@ export const BiggestDonorContainer = styled.div`
     margin: auto;
     padding: 5px 0px;
 
-    span{
-        overflow: visible!important;
+    span {
+        overflow: visible !important;
     }
 `
 export const SmallImageContainer = styled.div`
     transform: translateX(-25px);
+    border-radius: 50%;
+    background-color: #d6e2e2;
+    border: 3px solid ${props => props.theme.colors.primary};
+    overflow: none;
+    padding: .5rem;
 `
 
 export const OtherDonors = styled.div`
@@ -96,86 +101,49 @@ export const Donor = styled.div`
     width: 80%;
     margin: auto;
     margin-bottom: 15px;
-    padding: 5px 0px;
+    padding: 1rem 0;
 
-    span{
-        overflow: visible!important;
+    span {
+        overflow: visible !important;
     }
-
 `
 
 export const BiggestDonorInfos = styled.div`
     border-radius: 20px;
     align-items: center;
-    width: 80%;
-    margin: auto;
-    padding: 0px 10px 0px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    grid-gap: 0.5rem;
+    color: ${props => props.theme.colors.white};
 
     h1 {
-        color: #ebebeb;
         font-weight: bold;
-        font-size: 16px;
-        justify-content: flex-start;
-        display: flex;
-        transform: translateY(-5px);
-    }
-
-    div {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        font-size: 1.6rem;
     }
 
     p {
         font-weight: 300;
-        font-size: 12px;
-        color: #ebebeb;
-    }
-
-    span {
-        background-color: #ebebeb;
-        padding: 2px 5px;
-        border-radius: 10px;
-        font-size: 12px;
-        font-weight: 600;
+        font-size: 1.2rem;
     }
 `
 
 export const DonorsInfos = styled.div`
     border-radius: 20px;
-    align-items: center;
-    width: 80%;
-    margin: auto;
-    padding: 0px 10px 0px 5px;
+    color: ${props => props.theme.colors.greyDark1};
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    grid-gap: 0.5rem;
 
     h1 {
-        color: black;
-        font-weight: bold;
-        font-size: 16px;
-        justify-content: flex-start;
-        display: flex;
-        transform: translateY(-5px);
-    }
-
-    div {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        font-size: 1.6rem;
+        font-weight: 600;
     }
 
     p {
-        font-weight: 300;
         font-size: 12px;
-        color: black;
-    }
-
-    span {
-        background-color: #1e88e5;
-        padding: 2px 5px;
-        border-radius: 10px;
-        font-size: 12px;
-        font-weight: 600;
-        color: #dadada;
     }
 
     img {
