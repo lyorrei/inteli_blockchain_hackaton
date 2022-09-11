@@ -41,7 +41,7 @@ const SecondView: React.FC<Props> = props => {
             setBiggestDonor(_biggestDonor)
         }
         if (_getAllDonors != null) {
-            setDonors(_getAllDonors)
+            setDonors(_getAllDonors.reverse())
         }
     }
 
