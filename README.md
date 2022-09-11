@@ -19,7 +19,7 @@ A Our Neighbors pode atuar em todas as áreas dos Objetivos de Desenvolvimento S
 Por meio da nossa solução rápida e sem burocracia, a doação deixa de ser um simples ato para o doador e passa a ser uma verdadeira experiência. Através de um modelo escalável, processo transparente por conta da blockchain e gameficado, nossa plataforma traz a atenção de grandes empresas interessadas em demonstrar preocupação com temas ESG e inúmeros doadores ao redor do mundo.
 <br>
 <br>
-<p>Link do Projeto: <a a ser colocado</a></p>
+<p>Link do Projeto: <a href="https://our-neighbors.herokuapp.com/">https://our-neighbors.herokuapp.com/</a></p>
 <br>
 
 ## 💻 Configuração para desenvolvimento
