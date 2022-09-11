@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\reish\\Documents\\GitHub\\inteli_blockchain_hackaton\\backend\\src\\contracts\\campaign.sol": {
-      "lastModificationDate": 1662838718715,
-      "contentHash": "393b7c89d7056d00191e98f3971c3b30",
+      "lastModificationDate": 1662865363254,
+      "contentHash": "0acdad62949e5d9b1d02d39952031133",
       "sourceName": "backend/src/contracts/campaign.sol",
       "solcConfig": {
         "version": "0.8.9",
@@ -334,8 +334,8 @@
       ]
     },
     "C:\\Users\\reish\\Documents\\GitHub\\inteli_blockchain_hackaton\\backend\\src\\contracts\\campaignFactory.sol": {
-      "lastModificationDate": 1662838711790,
-      "contentHash": "a56187e9d73dfb6e9fb850e870ce30a8",
+      "lastModificationDate": 1662865955515,
+      "contentHash": "000b98b1a78ef305fd22a58fdb01bab1",
       "sourceName": "backend/src/contracts/campaignFactory.sol",
       "solcConfig": {
         "version": "0.8.9",

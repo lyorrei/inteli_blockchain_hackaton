@@ -9,6 +9,6 @@ export const ImageContainer = styled.div`
     justify-content: center;
 `
 export const MoneyDonatedNumber = styled.p`
-  font-size: 4rem;
+  font-size: 3rem;
   text-align: center;
 `;

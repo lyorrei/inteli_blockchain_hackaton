@@ -1,16 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import TitleBlue from '../../assets/images/blue/title.png'
-import Button from '@/components/button'
+import { Button } from '@/components/button'
 import { Container, ImageContainer } from './style'
 import Image from 'next/image'
+import Modal from '../modal'
+import DonationForm from '../donationForm'
+import { useMetamask } from '@/context/metamask'
 
 interface Props {}
 
 const Header: React.FC<Props> = props => {
+    const { campaignName, campaignDescription } = useMetamask()
+    const [showModal, setShowModal] = useState(false)
+
+    const closeModal = () => {
+        setShowModal(false)
+    }
+
+    const openModal = () => {
+        setShowModal(true)
+    }
+
     return (
         <Container>
-            <ImageContainer>
+            {/* <ImageContainer>
                 <Image
                     layout="fixed"
                     width={526}
@@ -18,16 +32,19 @@ const Header: React.FC<Props> = props => {
                     src={TitleBlue}
                     alt="Water change lifes"
                 />
-            </ImageContainer>
+            </ImageContainer> */}
 
-            <p>
-                O Nordeste brasileiro é foco de discussões acerca de
-                disponibilidade hídrica, uma vez que 26,7% da população
-                nordestina não têm acesso à água tratada. A cerca disso, a Ong
-                Sustainable Development & Water for All (SDW) causa um grande
-                impacto social levando saneamento básico a quem não tem acesso.
-            </p>
-            <Button>Faça uma doação</Button>
+            <h1>{campaignName}</h1>
+
+            <p>{campaignDescription}</p>
+            <Button onClick={openModal}>Make a donation</Button>
+            <Modal
+                show={showModal}
+                closeModal={closeModal}
+                title="Make a donation"
+            >
+                <DonationForm closeModal={closeModal} />
+            </Modal>
         </Container>
     )
 }

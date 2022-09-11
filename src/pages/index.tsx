@@ -6,6 +6,7 @@ import { Container, Content, PageContainer } from '@/styles/pages/index/style'
 
 import Navbar from '@/components/navbar'
 import Header from '@/components/header'
+import SecondView from '@/components/secondView'
 import Nft from '@/components/nft'
 
 const Home: React.FC = () => {
@@ -24,6 +25,8 @@ const Home: React.FC = () => {
                     </Content>
                 </Container>
             </PageContainer>
+            <SecondView>
+            </SecondView>
         </>
     )
 }

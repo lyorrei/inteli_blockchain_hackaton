@@ -8,6 +8,12 @@ export const Container = styled.div`
 
 export const LogoContainer = styled.div`
     margin-right: auto;
+
+    p {
+        font-family: 'Andada Pro', serif;
+        font-size: 2.6rem;
+        letter-spacing: .1rem;
+    }
 `
 
 export const NavItem = styled.div`

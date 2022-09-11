@@ -1,3 +1,4 @@
+import { useMetamask } from '@/context/metamask'
 import Image from 'next/image'
 import React from 'react'
 
@@ -8,6 +9,8 @@ import { Container, ImageContainer, MoneyDonatedNumber } from './style'
 interface Props {}
 
 const Nft: React.FC<Props> = props => {
+    const { donationBalance } = useMetamask()
+
     return (
         <Container>
             <ImageContainer>
@@ -20,7 +23,7 @@ const Nft: React.FC<Props> = props => {
                 />
             </ImageContainer>
 
-            <MoneyDonatedNumber>$ 10.000.000</MoneyDonatedNumber>
+            <MoneyDonatedNumber>ETH {donationBalance}</MoneyDonatedNumber>
             {/* <ProgressBar /> */}
         </Container>
     )

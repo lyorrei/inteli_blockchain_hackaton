@@ -1,5 +1,7 @@
 {
     "addresses": [
-        { "CampaignFactory": "0x7914c6b8a633B8856257f7BB3cdf08169Af1205c" }
+        { "CampaignFactory": "0x7914c6b8a633B8856257f7BB3cdf08169Af1205c" },
+        { "CampaignFactory": "0x6f55B959f27d34031ec38a20909c381f478AE14b" },
+        { "CampaignFactory": "0x729C3584f453376BD61Ed8AFAe35755F77E01f16" }
     ]
 }

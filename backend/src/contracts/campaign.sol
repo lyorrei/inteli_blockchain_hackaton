@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
+import '@openzeppelin/contracts/token/ERC1155/ERC1155.sol';
 
 /*
 Campaign contract: manage one campaign and track all donations
@@ -29,6 +29,8 @@ contract Campaign is ERC1155 {
 
     string public color;
 
+    string public description;
+
     struct Donors {
         string name;
         string number;
@@ -47,7 +49,7 @@ contract Campaign is ERC1155 {
     event Received(address, uint256);
 
     modifier isOwner() {
-        require(owner == msg.sender, "Not owner");
+        require(owner == msg.sender, 'Not owner');
         _;
     }
 
@@ -57,7 +59,8 @@ contract Campaign is ERC1155 {
         string memory _ipfsLink,
         address payable _receiver,
         string memory _color,
-        uint256 _expirationDate
+        uint256 _expirationDate,
+        string memory _description
     ) ERC1155(_ipfsLink) {
         owner = _owner;
         campaignName = _campaignName;
@@ -65,24 +68,22 @@ contract Campaign is ERC1155 {
         receiver = _receiver;
         color = _color;
         expirationDate = _expirationDate;
+        description =_description;
     }
 
-    receive() external payable {
-        require(status == true && msg.value > 0, "This campaign is not active");
-        _mint(msg.sender, 1, 1, "");
+    function addDonation(
+        string memory _name,
+        string memory _number,
+        address _endereco
+    ) external payable {
+        require(status == true && msg.value > 0, 'This campaign is not active');
+        _mint(msg.sender, 1, 1, '');
         if (msg.value > biggestDonation.amount) {
             biggestDonation.endereco = msg.sender;
             biggestDonation.amount = msg.value;
         }
-        emit Received(msg.sender, msg.value);
-    }
-
-    function addDonor(
-        string memory _name,
-        string memory _number,
-        address _endereco
-    ) public isOwner {
         donors.push(Donors(_name, _number, _endereco));
+        emit Received(msg.sender, msg.value);
     }
 
     function getDonors() public view returns (Donors[] memory) {
@@ -90,16 +91,18 @@ contract Campaign is ERC1155 {
     }
 
     function getBalance() public view returns (uint256) {
-        return address(this).balance;
+        return uint(address(this).balance);
     }
 
     function endCampaign() external payable isOwner {
         require(
             block.timestamp >= expirationDate && status == true,
-            "You cannot finish the campaign yet"
+            'You cannot finish the campaign yet'
         );
         receiver.transfer(getBalance());
-        _mint(biggestDonation.endereco, 2, 1, "");
+        if (biggestDonation.endereco != address(0)) {
+            _mint(biggestDonation.endereco, 2, 1, '');
+        }
         status = false;
     }
 }

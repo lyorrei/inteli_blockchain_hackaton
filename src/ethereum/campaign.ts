@@ -4,10 +4,11 @@ import campaignJson from '../../backend/src/contracts/compiledContracts/backend/
 
 export const campaign = (address) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
+    const signer = provider.getSigner();
     const contract = new ethers.Contract(
         address,
         campaignJson.abi,
-        provider
+        signer
     )
     return contract
 }

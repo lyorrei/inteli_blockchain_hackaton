@@ -37,7 +37,8 @@ contract CampaignFactory {
         string memory _ipfsLink,
         address payable _donationReceiver,
         string memory _color,
-        uint256 _expirationDate
+        uint256 _expirationDate,
+        string memory _decription
     ) public isOwner {
         Campaign campaign = new Campaign(
             owner,
@@ -45,7 +46,8 @@ contract CampaignFactory {
             _ipfsLink,
             _donationReceiver,
             _color,
-            _expirationDate
+            _expirationDate,
+            _decription
         );
         arrCampaigns.push(Campaigns(_name, address(campaign)));
         activeCampaign = address(campaign);
