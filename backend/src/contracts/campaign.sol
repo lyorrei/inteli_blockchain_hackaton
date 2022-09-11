@@ -35,9 +35,11 @@ contract Campaign is ERC1155 {
         string name;
         string number;
         address endereco;
+        uint amount;
     }
 
     struct BiggestDonation {
+        string name;
         address endereco;
         uint256 amount;
     }
@@ -81,8 +83,9 @@ contract Campaign is ERC1155 {
         if (msg.value > biggestDonation.amount) {
             biggestDonation.endereco = msg.sender;
             biggestDonation.amount = msg.value;
+            biggestDonation.name = _name;
         }
-        donors.push(Donors(_name, _number, _endereco));
+        donors.push(Donors(_name, _number, _endereco, msg.value));
         emit Received(msg.sender, msg.value);
     }
 

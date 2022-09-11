@@ -8,6 +8,7 @@ import Navbar from '@/components/navbar'
 import Header from '@/components/header'
 import SecondView from '@/components/secondView'
 import Nft from '@/components/nft'
+import TimeLeft from '@/components/timeLeft'
 
 const Home: React.FC = () => {
     return (
@@ -22,6 +23,7 @@ const Home: React.FC = () => {
                     <Content>
                         <Header />
                         <Nft />
+                        <TimeLeft/>
                     </Content>
                 </Container>
             </PageContainer>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import LogoBlue from '../../assets/images/blue/logo.png'
+import Logo from '../../assets/images/logo.png'
 import { Container, LogoContainer, NavItem } from './style'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,9 +12,7 @@ const navbar: React.FC<Props> = props => {
     return (
         <Container>
             <LogoContainer>
-                {/* <Leaf /> */}
-                <p>Our Neighbors</p>
-                {/* <Image src={LogoBlue} /> */}
+                <Image src={Logo} layout="fixed" width={145} height={70} />
             </LogoContainer>
 
             <NavItem>

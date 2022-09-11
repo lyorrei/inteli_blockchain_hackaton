@@ -4,11 +4,14 @@ import withContexts from 'src/HOC/withContexts'
 import { campaignFactory } from 'src/ethereum/campaignFactory'
 import { ethers } from 'ethers'
 import { campaign } from 'src/ethereum/campaign'
+import jwt from 'jsonwebtoken'
+// import { getETHPrice } from './getETHprice';
 
 const getProvider = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     return provider
 }
+
 export const getCampaignColor = async () => {
     const campaignFactoryContract = await campaignFactory()
     const addrs = await campaignFactoryContract.activeCampaign()
@@ -33,9 +36,22 @@ export const sendDonation = async (ETHammount, name, number) => {
         const accounts = await window.ethereum.request({
             method: 'eth_requestAccounts'
         })
-        await campaignContract.addDonation(name, number, accounts[0], {
-            value: ethers.utils.parseEther(ETHammount)
+        const res = await fetch('/api/donation', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, number })
         })
+        const { hashedName, hashedNumber } = await res.json()
+        await campaignContract.addDonation(
+            hashedName,
+            hashedNumber,
+            accounts[0],
+            {
+                value: ethers.utils.parseEther(ETHammount)
+            }
+        )
     } catch (err) {
         console.log(err)
     }
@@ -48,9 +64,10 @@ export const getDonationsBalance = async () => {
     // const donationsBalance = await campaignContract.getBalance()
     const provider = await getProvider()
     const balance = await provider.getBalance(addrs)
-    const finalBalance = ethers.utils.formatEther(balance)
-    // const finalBalance = balance.toNumber()
-    return finalBalance
+    const finalETHBalance = ethers.utils.formatEther(balance)
+    // const ETHPrice = await getETHPrice();
+    // const finalUSDBalance = Number(finalETHBalance * ETHPrice).toFixed(2);
+    return finalETHBalance
 }
 
 export const getDonors = async () => {
@@ -58,7 +75,24 @@ export const getDonors = async () => {
     const addrs = await campaignFactoryContract.activeCampaign()
     const campaignContract = await campaign(addrs)
     const donors = await campaignContract.getDonors()
-    return donors
+    const donorsArray = []
+    for (let i = 0; i < donors.length; i++) {
+        const res = await fetch('/api/donors', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ hashedName: donors[i].name })
+        })
+        const { name } = await res.json()
+        const donor = {
+            ...donors[i],
+            name
+        }
+        donorsArray.push(donor)
+    }
+
+    return donorsArray
 }
 
 export const getExpirationDate = async () => {
@@ -66,11 +100,11 @@ export const getExpirationDate = async () => {
     const addrs = await campaignFactoryContract.activeCampaign()
     const campaignContract = await campaign(addrs)
     const unixExpirationDate = await campaignContract.expirationDate()
-    const date = new Date(unixExpirationDate * 1000)
-    const finalDate = `${date.toLocaleDateString(
-        'en-GB'
-    )} ${date.toLocaleTimeString('it-IT')}`
-    return finalDate
+    // const date = new Date(unixExpirationDate * 1000)
+    // const finalDate = `${date.toLocaleDateString(
+    //     'en-GB'
+    // )} ${date.toLocaleTimeString('it-IT')}`
+    return unixExpirationDate
 }
 
 export const getBiggestDonor = async () => {
@@ -78,7 +112,25 @@ export const getBiggestDonor = async () => {
     const addrs = await campaignFactoryContract.activeCampaign()
     const campaignContract = await campaign(addrs)
     const biggestDonor = await campaignContract.biggestDonation()
-    return biggestDonor
+
+    if (biggestDonor[0]) {
+        const res = await fetch('/api/donors', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ hashedName: biggestDonor.name })
+        })
+        const { name } = await res.json()
+        const biggestDonorFinal = {
+            name: name,
+            address: biggestDonor[1],
+            amount: ethers.utils.formatEther(biggestDonor[2])
+        }
+        return biggestDonorFinal
+    }
+
+    return null
 }
 
 export const getnftLink = async () => {
@@ -87,16 +139,16 @@ export const getnftLink = async () => {
     const campaignContract = await campaign(addrs)
     const nftLink = await campaignContract.uri(1)
 
-    if (nftLink != "") {
+    if (nftLink != '') {
         const formatedIpfsLink = 'https://ipfs.io/ipfs/' + nftLink.slice(7)
         const response = await fetch(formatedIpfsLink)
         const metadata = await response.json()
-        const formatedImageLink = 'https://ipfs.io/ipfs/' + metadata.image.slice(7)
+        const formatedImageLink =
+            'https://ipfs.io/ipfs/' + metadata.image.slice(7)
         return formatedImageLink
     }
 
     return null
-
 }
 
 export const getCampaignDescription = async () => {

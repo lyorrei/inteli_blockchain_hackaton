@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\reish\\Documents\\GitHub\\inteli_blockchain_hackaton\\backend\\src\\contracts\\campaign.sol": {
-      "lastModificationDate": 1662865363254,
-      "contentHash": "0acdad62949e5d9b1d02d39952031133",
+      "lastModificationDate": 1662880865287,
+      "contentHash": "91199b7a2f61af641f3db310c58164d9",
       "sourceName": "backend/src/contracts/campaign.sol",
       "solcConfig": {
         "version": "0.8.9",

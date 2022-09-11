@@ -4,6 +4,7 @@ import { sendDonation } from 'src/ethereum/interactions/functions'
 import { Button } from '../button'
 import { Input } from '../input'
 import { Form } from './style'
+import Swal from 'sweetalert2'
 
 interface Props {
     closeModal()
@@ -16,8 +17,23 @@ const DonationForm: React.FC<Props> = ({ closeModal }) => {
         formState: { errors }
     } = useForm()
     const onSubmit = async data => {
-        await sendDonation(data.value, data.name, data.cpf)
-        closeModal()
+        try {
+            await sendDonation(data.value, data.name, data.cpf)
+            closeModal()
+            Swal.fire(
+                'Good job!',
+                'The transaction is happening right now in the blockchain! Soon you\'ll receive a confirmation from metamask!',
+                'success'
+              )
+        } catch (err) {
+            closeModal()
+            Swal.fire({
+                title: 'Error!',
+                text: 'Something went wrong!',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
+        }
     }
 
     return (
