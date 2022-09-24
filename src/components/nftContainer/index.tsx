@@ -10,6 +10,7 @@ import {
     getDonationsBalance,
     getnftLink
 } from 'src/ethereum/interactions/functions'
+import Nft from '../nft'
 
 interface Props {}
 
@@ -32,13 +33,14 @@ const NftContainer: React.FC<Props> = props => {
     return (
         <Container>
             <ImageContainer>
-                <Image
+                {/* <Image
                     src={NftImage} //{nftLink ? nftLink : ''} //NftImage}
                     layout="fixed"
                     width={251}
                     height={390}
                     quality={100}
-                />
+                /> */}
+                <Nft />
             </ImageContainer>
 
             <MoneyDonatedNumber>

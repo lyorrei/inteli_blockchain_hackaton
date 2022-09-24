@@ -1,29 +1,42 @@
-import React, { useRef } from 'react'
-import { Canvas, useLoader, useFrame } from "react-three-fiber";
+import React, { Suspense } from 'react'
+import { Environment, OrbitControls } from '@react-three/drei'
+import { Canvas, useFrame } from '@react-three/fiber'
 
-const  Nft: React.FC  = () => {
-    // textures from the imported image
-    const texture = useLoader(THREE.TextureLoader, img)
-    const texture1 = useLoader(THREE.TextureLoader, img1)
-    const texture2 = useLoader(THREE.TextureLoader, img2)
-    const group = useRef();
-    // loading the table.gtlf file being imported into the component.
-    const { nodes } = useLoader(GLTFLoader, table);
-    // useFrame will run outside of react in animation frames to optimize updates.
-    useFrame(() => {
-      group.current.rotation.x = 5.09;
-    });
+import { useLoader } from '@react-three/fiber'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+
+function Mesh() {
+    const gltf = useLoader(GLTFLoader, '/waterDrop.glb')
+    console.log(gltf)
+    const myMesh = React.useRef(null)
+
+    useFrame(({ clock }) => {
+        myMesh.current.rotation.y = clock.getElapsedTime() / 2
+    })
+
     return (
-      // Add a ref to the group. This gives us a hook to manipulate the properties of this geometry in the useFrame callback.
-      <group ref={group} position={[-12, -20, -10]} >
-        <mesh visible geometry={nodes.mesh_1.geometry}>
-        <meshPhongMaterial attach="material" color="gold" map={texture} map={texture1} map={texture2}/>
-        </mesh>
-        <mesh visible geometry={nodes.mesh_0.geometry}>
-        <meshPhongMaterial attach="material" color="#795C34" map={texture} map={texture1} map={texture2}/>
-        </mesh>
-      </group>
-    );
-  }
+        <Suspense fallback={<div>loading...</div> /* or null */}>
+            <primitive
+                ref={myMesh}
+                object={gltf.scene}
+                position={[0, -1.7, 0]}
+            />
+            <meshStandardMaterial color="hotpink" transparent />
+        </Suspense>
+    )
+}
 
-  export default Nft
+const Nft: React.FC = () => {
+    return (
+        <div style={{ width: '50vw', height: '60vh' }}>
+            <Canvas camera={{ position: [0, 0, 3] }}>
+                <OrbitControls />
+                <directionalLight color="" intensity={4} position={[4, 2, 10]} />
+                <spotLight position={[2, 2, -6] } intensity={2} angle={0.9} />
+                <Mesh />
+            </Canvas>
+        </div>
+    )
+}
+
+export default Nft

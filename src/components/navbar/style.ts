@@ -4,6 +4,7 @@ export const Container = styled.div`
     padding: 1rem 1.5rem;
     display: flex;
     align-items: center;
+    height: 10rem;
 `
 
 export const LogoContainer = styled.div`

@@ -20,7 +20,9 @@ export const Container = styled.div`
 
 export const Content = styled.div`
     padding: 0 14rem;
+    align-items: center;
     display: grid;
     grid-template-columns: 55% 40%;
     grid-gap: 8rem;
+    height: calc(100% - 16rem);
 `
