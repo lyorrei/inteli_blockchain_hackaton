@@ -1,56 +1,29 @@
-import { useMetamask } from '@/context/metamask'
-import Image from 'next/image'
-import React, { useEffect } from 'react'
+import React, { useRef } from 'react'
+import { Canvas, useLoader, useFrame } from "react-three-fiber";
 
-import NftImage from '../../assets/images/blue/nft.png'
-import ProgressBar from '../progressBar'
-import { Container, ImageContainer, MoneyDonatedNumber } from './style'
-import AnimatedNumber from 'animated-number-react'
-import {
-    getDonationsBalance,
-    getnftLink
-} from 'src/ethereum/interactions/functions'
-
-interface Props {}
-
-const Nft: React.FC<Props> = props => {
-    const { donationBalance, setDonationBalance, setNftLink, nftLink } =
-        useMetamask()
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            getDonationsBalance().then(balance => {
-                setDonationBalance(balance)
-            })
-        }, 5000)
-
-        getnftLink(1).then(url => setNftLink(url))
-
-        return () => clearInterval(interval)
-    }, [])
-
+const  Nft: React.FC  = () => {
+    // textures from the imported image
+    const texture = useLoader(THREE.TextureLoader, img)
+    const texture1 = useLoader(THREE.TextureLoader, img1)
+    const texture2 = useLoader(THREE.TextureLoader, img2)
+    const group = useRef();
+    // loading the table.gtlf file being imported into the component.
+    const { nodes } = useLoader(GLTFLoader, table);
+    // useFrame will run outside of react in animation frames to optimize updates.
+    useFrame(() => {
+      group.current.rotation.x = 5.09;
+    });
     return (
-        <Container>
-            <ImageContainer>
-                <Image
-                    src={NftImage} //{nftLink ? nftLink : ''} //NftImage}
-                    layout="fixed"
-                    width={251}
-                    height={390}
-                    quality={100}
-                />
-            </ImageContainer>
+      // Add a ref to the group. This gives us a hook to manipulate the properties of this geometry in the useFrame callback.
+      <group ref={group} position={[-12, -20, -10]} >
+        <mesh visible geometry={nodes.mesh_1.geometry}>
+        <meshPhongMaterial attach="material" color="gold" map={texture} map={texture1} map={texture2}/>
+        </mesh>
+        <mesh visible geometry={nodes.mesh_0.geometry}>
+        <meshPhongMaterial attach="material" color="#795C34" map={texture} map={texture1} map={texture2}/>
+        </mesh>
+      </group>
+    );
+  }
 
-            <MoneyDonatedNumber>
-                <AnimatedNumber
-                    value={donationBalance}
-                    formatValue={value => value.toFixed(5)}
-                />{' '}
-                ETH
-            </MoneyDonatedNumber>
-            {/* <ProgressBar /> */}
-        </Container>
-    )
-}
-
-export default Nft
+  export default Nft
