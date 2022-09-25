@@ -7,7 +7,6 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 function Mesh() {
     const gltf = useLoader(GLTFLoader, '/waterDrop.glb')
-    console.log(gltf)
     const myMesh = React.useRef(null)
 
     useFrame(({ clock }) => {

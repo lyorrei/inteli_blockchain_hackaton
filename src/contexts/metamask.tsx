@@ -10,37 +10,7 @@ export default function MetamaskProvider({ children }) {
     const [nftLink, setNftLink] = useState('')
     const [campaignExpirationDate, setCampaignExpirationDate] = useState('')
     const [donationBalance, setDonationBalance] = useState('')
-
-    useEffect(() => {
-        if (window.ethereum) {
-            window.ethereum.on('accountsChanged', accountsChanged)
-            window.ethereum.on('chainChanged', chainChanged)
-            connectHandler()
-        }
-    }, [])
-
-    const connectHandler = async () => {
-        if (window.ethereum) {
-            try {
-                const res = await window.ethereum.request({
-                    method: 'eth_requestAccounts'
-                })
-                await accountsChanged(res[0])
-            } catch (err) {
-                console.error(err)
-            }
-        } else {
-            alert('Install MetaMask')
-        }
-    }
-
-    const accountsChanged = async newAccount => {
-        setAccount(newAccount)
-    }
-
-    const chainChanged = () => {
-        setAccount(null)
-    }
+    const [loading, setLoading] = useState(true)
 
     return (
         <MetamaskContext.Provider
@@ -58,7 +28,9 @@ export default function MetamaskProvider({ children }) {
                 campaignExpirationDate,
                 setCampaignExpirationDate,
                 donationBalance,
-                setDonationBalance
+                setDonationBalance,
+                loading,
+                setLoading
             }}
         >
             {children}
@@ -84,7 +56,9 @@ export function useMetamask() {
         campaignExpirationDate,
         setCampaignExpirationDate,
         donationBalance,
-        setDonationBalance
+        setDonationBalance,
+        loading,
+        setLoading
     } = context
     return {
         account,
@@ -100,6 +74,8 @@ export function useMetamask() {
         campaignExpirationDate,
         setCampaignExpirationDate,
         donationBalance,
-        setDonationBalance
+        setDonationBalance,
+        loading,
+        setLoading
     }
 }
