@@ -50,7 +50,6 @@ const NftContainer: React.FC<Props> = props => {
                 />{' '}
                 ETH
             </MoneyDonatedNumber>
-            {/* <ProgressBar /> */}
         </Container>
     )
 }

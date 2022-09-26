@@ -147,7 +147,7 @@ export const getnftLink = async id => {
             const response = await fetch(formatedIpfsLink)
             const metadata = await response.json()
             const formatedImageLink =
-                'https://ipfs.io/ipfs/' + metadata.image.slice(7)
+                'https://ipfs.io/ipfs/' + metadata.image.slice(7) + '/nft.glb'
             return formatedImageLink
         }
     } catch (err) {

@@ -30,8 +30,12 @@ const Nft: React.FC = () => {
         <div style={{ width: '50vw', height: '60vh' }}>
             <Canvas camera={{ position: [0, 0, 3] }}>
                 <OrbitControls />
-                <directionalLight color="" intensity={4} position={[4, 2, 10]} />
-                <spotLight position={[2, 2, -6] } intensity={2} angle={0.9} />
+                <directionalLight
+                    color=""
+                    intensity={4}
+                    position={[4, 2, 10]}
+                />
+                <spotLight position={[2, 2, -6]} intensity={2} angle={0.9} />
                 <Mesh />
             </Canvas>
         </div>
