@@ -1,4 +1,5 @@
 //npm modules
+require('dotenv').config()
 const HDWalletProvider = require('@truffle/hdwallet-provider')
 const Web3 = require('web3')
 
@@ -11,8 +12,8 @@ const jsonAddresses = require('./contractsAddresses.json')
 // Setup rinkeby account
 let web3
 const provider = new HDWalletProvider(
-    'prefer output citizen artwork major aunt moment hero spot asthma quick report',
-    'https://rinkeby.infura.io/v3/ce4c9d4f09204bf58decc5edbffe4d38'
+    process.env.SECRET,
+    'https://eth-goerli.g.alchemy.com/v2/f6iyXVjPgHyStzGOBmpxAk2H4XQkeXi6'
 )
 web3 = new Web3(provider)
 
@@ -71,7 +72,7 @@ const createOneCampaign = async (
 }
 
 ;(async () => {
-    const dateStr = '2022-09-12'
+    const dateStr = '2023-03-30'
     const date = new Date(dateStr)
     const unixTimestamp = Number(Math.floor(date.getTime() / 1000))
 

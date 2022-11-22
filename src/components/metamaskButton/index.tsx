@@ -17,12 +17,11 @@ const MetamaskButton: React.FC<Props> = props => {
                     method: 'eth_requestAccounts'
                 })
                 await setAccount(res[0])
-
-                const rinkebyNetwork = '0x4'
-                if (window.ethereum.chainId !== rinkebyNetwork) {
+                const goerliNetwork = '0x5'
+                if (window.ethereum.chainId !== goerliNetwork) {
                     await window.ethereum.request({
                         method: 'wallet_switchEthereumChain',
-                        params: [{ chainId: rinkebyNetwork }]
+                        params: [{ chainId: goerliNetwork }]
                     })
                 }
                 router.replace('/campaign')

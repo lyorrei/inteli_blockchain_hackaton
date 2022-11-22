@@ -53,7 +53,7 @@ const Campaign: React.FC = () => {
     }, [])
 
     const getCampaignInfo = async () => {
-        if (window.ethereum.chainId !== '0x4') {
+        if (window.ethereum.chainId !== '0x5') {
             setLoading(true)
             alert('Change Network to Rinkeby!')
         } else {

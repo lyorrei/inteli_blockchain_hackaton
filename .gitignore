@@ -30,3 +30,5 @@ yarn-error.log*
 
 # vercel
 .vercel
+backend/src/contracts/.env
+.env
